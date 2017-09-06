@@ -1,0 +1,101 @@
+﻿@model IEnumerable<BuntWeb.Domain.BuntlådeställeTabellrad>
+
+<h1>Redigera buntlådeställen</h1>
+
+@if(!string.IsNullOrWhiteSpace(TempData["Error"] as string))
+{ 
+    <div class="alert alert-danger">
+        <strong>Fel!</strong> @TempData["Error"]
+    </div>
+}
+
+<button class="btn" data-toggle="modal" data-target="#laggTillModal">Lägg till</button>
+<button class="btn" data-toggle="modal" data-target="#flyttaModal">Flytta</button>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Adress</th>
+                    <th>Typ</th>
+                    <th>Buntlådenummer</th>
+                    <th></th>
+                </tr>
+            <tbody>
+                @foreach (var ställe in Model)
+            {
+
+                    <tr>
+                        <td>@ställe.Index</td>
+                        <td>@ställe.Adress</td>
+                        <td>@ställe.Typ</td>
+                        <td>@ställe.Buntlådenummer</td>
+                        <td>
+                            <form action="@Url.Action("TaBort")" method="post">
+                                <button type="submit" class="btn">Ta bort</button>
+                                <input type="hidden" name="index" value="@ställe.Index" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="laggTillModal" class="modal fade" role="dialog">
+    <form action="@Url.Action("LäggTill")" method="post">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Lägg till buntlådeställe</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="adress">Adress:</label>
+                    <input type="text" class="form-control" id="adress" name="adress">
+                </div>
+                <div class="form-group">
+                    <label for="typ">Typ:</label>
+                    <select class="form-control" id="typ" name="typ">
+                        <option value="0">Lämna</option>
+                        <option value="1">Hämta</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Lägg till</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+<div id="flyttaModal" class="modal fade" role="dialog">
+    <form action="@Url.Action("Flytta")" method="post">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Flytta buntlådeställe</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="frånIndex">Från index:</label>
+                    <input type="text" class="form-control" id="frånIndex" name="frånIndex">
+                </div>
+                <div class="form-group">
+                    <label for="tillIndex">Till index:</label>
+                    <input type="text" class="form-control" id="tillIndex" name="tillIndex">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Flytta</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
