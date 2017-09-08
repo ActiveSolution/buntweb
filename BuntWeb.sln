@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuntWeb", "BuntWeb\BuntWeb.csproj", "{2799FCC1-5C17-4E5E-B12C-7C51B70D17A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Krav", "Krav", "{7183E8EB-D251-41C5-8BFD-24043D173BDA}"
+	ProjectSection(SolutionItems) = preProject
+		Krav.txt = Krav.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64036185-8386-4720-86EE-59CB8325EB44}
 	EndGlobalSection
 EndGlobal

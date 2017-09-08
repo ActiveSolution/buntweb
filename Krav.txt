@@ -1,0 +1,20 @@
+REGLER FÖR BUNTLÅDENUMMER:
+--------------------------
+* Buntlådenummer börjar på 1
+* Lämnaställens buntlådenummer motsvarar dess ordning i listan i förhållande till andra lämnaställen
+* Hämtaställen har samma ordningsnummer som det lämnaställe som har samma adress som hämtastället
+	
+Exempel:
+	Kungstensgatan 1 (LÄMNA): 1
+	Kungstensgatan 3 (LÄMNA): 2
+	Kungstensgatan 1 (HÄMTA): 1
+	Kungstensgatan 5 (LÄMNA): 3
+	Kungstensgatan 5 (HÄMTA): 3
+	Kungstensgatan 1 (HÄMTA): 1
+
+ÖVRIGA KRAV:
+------------
+* Lägg till ska lägga till ett buntlådeställe sist i listan
+* Det får inte finnas två lämnaställen med samma adress (annars kasta BuntlådeställeException)
+* Det får inte finnas ett hämtaställe för en adress som inte har ett lämnaställe (annars kasta BuntlådeställeException)
+* Då man flyttar eller tar bort buntlådenummer används index för att ange vilket buntlådeställe som avses. Kasta BuntlådeställeException om indexet inte finns.
