@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Krav", "Krav", "{7183E8EB-D
 		Krav.txt = Krav.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuntWeb.Tests", "BuntWeb.Tests\BuntWeb.Tests.csproj", "{E67606AE-AE7A-4304-85CE-F0E620C6F36D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{2799FCC1-5C17-4E5E-B12C-7C51B70D17A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2799FCC1-5C17-4E5E-B12C-7C51B70D17A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2799FCC1-5C17-4E5E-B12C-7C51B70D17A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67606AE-AE7A-4304-85CE-F0E620C6F36D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67606AE-AE7A-4304-85CE-F0E620C6F36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67606AE-AE7A-4304-85CE-F0E620C6F36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67606AE-AE7A-4304-85CE-F0E620C6F36D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Razor.Generator;
 
 namespace BuntWeb.Domain
 {
     public class Buntlådeställen
     {
+        private List<Buntlådeställe> _ställen = new List<Buntlådeställe>();
+
         public void LäggTill(string adress, Typ typ)
         {
+            if (typ == Typ.Lämna && _ställen.Any(s => s.Adress == adress && s.Typ == Typ.Lämna))
+                throw new BuntlådeställeException("Det får inte finnas två lämnaställen med samma adress");
+
+            _ställen.Add(new Buntlådeställe { Adress = adress, Typ = typ });
         }
 
         public void TaBort(int index)
@@ -18,51 +26,16 @@ namespace BuntWeb.Domain
 
         public IEnumerable<BuntlådeställeTabellrad> Lista()
         {
-            return new[]
+            return _ställen.Select(s => new BuntlådeställeTabellrad
             {
-                new BuntlådeställeTabellrad
-                {
-                    Adress = "Kungstensgatan 1",
-                    Typ = "Lämna",
-                    Index = 0,
-                    Buntlådenummer = 1
-                },
-                new BuntlådeställeTabellrad
-                {
-                    Adress = "Kungstensgatan 3",
-                    Typ = "Lämna",
-                    Index = 1,
-                    Buntlådenummer = 2
-                },
-                new BuntlådeställeTabellrad
-                {
-                    Adress = "Kungstensgatan 1",
-                    Typ = "Hämta",
-                    Index = 2,
-                    Buntlådenummer = 1
-                },
-                new BuntlådeställeTabellrad
-                {
-                    Adress = "Kungstensgatan 5",
-                    Typ = "Lämna",
-                    Index = 3,
-                    Buntlådenummer = 3
-                },
-                new BuntlådeställeTabellrad
-                {
-                    Adress = "Kungstensgatan 5",
-                    Typ = "Hämta",
-                    Index = 4,
-                    Buntlådenummer = 3
-                },
-                new BuntlådeställeTabellrad
-                {
-                    Adress = "Kungstensgatan 1",
-                    Typ = "Hämta",
-                    Index = 5,
-                    Buntlådenummer = 1
-                },
-            };
+                Adress = s.Adress
+            });
         }
+    }
+
+    internal class Buntlådeställe
+    {
+        public string Adress { get; set; }
+        public Typ Typ { get; set; }
     }
 }
